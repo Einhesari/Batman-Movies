@@ -24,6 +24,5 @@ fun FoundedMovie.mapToDomainModel(): SearchedMovie {
         imdbID = imdbID,
         type = type,
         poster = posterUrl
-
     )
 }

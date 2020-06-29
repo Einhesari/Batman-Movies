@@ -1,8 +1,8 @@
-package com.einhesari.zomatosample.di.module
+package com.einhesari.batmanmovies.di.module
 
 import androidx.lifecycle.ViewModel
 import com.einhesari.batmanmovies.di.scope.ViewModelKey
-import com.einhesari.batmanmovies.presenter.MoviesViewModel
+import com.einhesari.batmanmovies.presentation.MoviesViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

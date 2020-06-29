@@ -1,14 +1,8 @@
 package com.einhesari.batmanmovies.di.component
 
 import android.content.Context
-import androidx.lifecycle.ViewModelProvider
-import com.einhesari.batmanmovies.ViewModelProviderFactory
-import com.einhesari.batmanmovies.di.module.ApiModule
-import com.einhesari.batmanmovies.di.module.MovieRepositoryModule
-import com.einhesari.batmanmovies.di.module.MoviesRemoteDataSourceModule
-import com.einhesari.batmanmovies.presenter.MoviesFragment
-import com.einhesari.zomatosample.di.module.ViewModelFactoryModule
-import com.einhesari.zomatosample.di.module.ViewModelModule
+import com.einhesari.batmanmovies.di.module.*
+import com.einhesari.batmanmovies.presentation.MoviesFragment
 import dagger.BindsInstance
 import dagger.Component
 import dagger.Subcomponent

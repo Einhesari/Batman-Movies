@@ -1,4 +1,4 @@
-package com.einhesari.zomatosample.di.module
+package com.einhesari.batmanmovies.di.module
 
 import androidx.lifecycle.ViewModelProvider
 import com.einhesari.batmanmovies.ViewModelProviderFactory

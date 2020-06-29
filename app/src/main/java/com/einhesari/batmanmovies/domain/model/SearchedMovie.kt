@@ -1,9 +1,21 @@
 package com.einhesari.batmanmovies.domain.model
 
-import com.google.gson.annotations.SerializedName
+import com.einhesari.batmanmovies.presentation.model.BatmanMovie
 
-data class SearchedMovie(@SerializedName("Title") val title: String,
-                         @SerializedName("Year") val year: String,
-                         @SerializedName("imdbID") val imdbID: String,
-                         @SerializedName("Type") val type: String,
-                         @SerializedName("Poster") val poster: String)
+data class SearchedMovie(
+    val title: String,
+    val year: String,
+    val imdbID: String,
+    val type: String,
+    val poster: String
+)
+
+fun SearchedMovie.mapToPresetationModel(): BatmanMovie {
+    return BatmanMovie(
+        title = title,
+        year = year,
+        imdbID = imdbID,
+        type = type,
+        poster = poster
+    )
+}

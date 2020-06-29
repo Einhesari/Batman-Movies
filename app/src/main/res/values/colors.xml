@@ -3,4 +3,30 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+
+    <!-- Custom CardView -->
+
+    <color name="shadow1">#01000000</color>
+    <color name="shadow2">#02000000</color>
+    <color name="shadow3">#03000000</color>
+    <color name="shadow4">#04000000</color>
+    <color name="shadow5">#0D000000</color>
+
+    <!-- Theme Colours -->
+
+    <color name="colorOnPrimary">#222222</color>
+
+    <color name="colorSecondary">#FB6467</color>
+    <color name="colorSecondaryDark">#C3303D</color>
+    <color name="colorSecondaryLight">#FF9695</color>
+
+    <color name="colorOnSecondary">#222222</color>
+
+    <color name="colorBackground">#EEEEEE</color>
+
+    <color name="colorSurface">#FFFFFF</color>
+    <color name="colorOnSurface">#222222</color>
+
+    <color name="colorError">#E0001D</color>
+    <color name="colorOnError">#ffffff</color>
 </resources>

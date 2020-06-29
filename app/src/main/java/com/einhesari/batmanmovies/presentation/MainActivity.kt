@@ -1,4 +1,4 @@
-package com.einhesari.batmanmovies.presenter
+package com.einhesari.batmanmovies.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
