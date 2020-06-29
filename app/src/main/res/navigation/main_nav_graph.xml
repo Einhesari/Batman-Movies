@@ -7,5 +7,6 @@
     <fragment
         android:id="@+id/moviesFragment"
         android:name="com.einhesari.batmanmovies.presenter.MoviesFragment"
-        android:label="MoviesFragment" />
+        android:label="fragment_movies"
+        tools:layout="@layout/fragment_movies" />
 </navigation>
