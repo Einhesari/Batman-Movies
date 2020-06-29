@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Batman Movies</string>
+
+    <string name="api_key">3e974fca</string>
 </resources>

@@ -1,5 +1,6 @@
 package com.einhesari.batmanmovies.data.model
 
+import com.einhesari.batmanmovies.domain.model.SearchedMovie
 import com.google.gson.annotations.SerializedName
 
 data class SearchResponse(
@@ -13,5 +14,16 @@ data class FoundedMovie(
     @SerializedName("Year") val year: String,
     @SerializedName("imdbID") val imdbID: String,
     @SerializedName("Type") val type: String,
-    @SerializedName("Poster") val poster: String
+    @SerializedName("Poster") val posterUrl: String
 )
+
+fun FoundedMovie.mapToDomainModel(): SearchedMovie {
+    return SearchedMovie(
+        title = title,
+        year = year,
+        imdbID = imdbID,
+        type = type,
+        poster = posterUrl
+
+    )
+}
