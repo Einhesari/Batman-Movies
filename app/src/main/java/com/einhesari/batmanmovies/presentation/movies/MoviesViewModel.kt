@@ -9,7 +9,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class MoviesViewModel @Inject constructor(private val moviesUseCase: MoviesUseCase) : ViewModel() {
+class MoviesViewModel @Inject constructor(private val useCase: MoviesUseCase) : ViewModel() {
 
     private val compositeDisposable = CompositeDisposable()
     private val allMovies = mutableListOf<BatmanMovie>()
@@ -19,7 +19,7 @@ class MoviesViewModel @Inject constructor(private val moviesUseCase: MoviesUseCa
 
     fun getAllBatmanMovies() {
         state.accept(MoviesFragmentState.Loading)
-        moviesUseCase.getAllMovies()
+        useCase.getAllMovies()
             .subscribeOn(Schedulers.io())
             .subscribe({
                 it.forEach {
@@ -33,7 +33,10 @@ class MoviesViewModel @Inject constructor(private val moviesUseCase: MoviesUseCa
             }
     }
 
-
+    override fun onCleared() {
+        super.onCleared()
+        compositeDisposable.dispose()
+    }
 }
 
 sealed class MoviesFragmentState {

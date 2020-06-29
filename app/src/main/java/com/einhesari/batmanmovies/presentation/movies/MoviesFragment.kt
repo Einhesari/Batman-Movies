@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.einhesari.batmanmovies.R
@@ -21,6 +23,7 @@ class MoviesFragment : Fragment() {
 
     lateinit var binding: FragmentMoviesBinding
     private val compositeDisposable = CompositeDisposable()
+    private val selectionViewModel: ListToDetailViewModel by activityViewModels()
 
     @Inject
     lateinit var factory: ViewModelProviderFactory
@@ -57,7 +60,7 @@ class MoviesFragment : Fragment() {
     }
 
     private fun initDataInteraction(savedInstanceState: Bundle?) {
-        if (savedInstanceState == null) {
+        if (savedInstanceState == null || selectionViewModel.selectedMovieId.equals("")) {
             viewModel.getAllBatmanMovies()
         }
         viewModel.getState().observeOn(AndroidSchedulers.mainThread())
@@ -80,7 +83,9 @@ class MoviesFragment : Fragment() {
         adapter.selectedMovie()
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe {
-
+                selectionViewModel.lastListPosition = getFirstVisibleItemPosition()
+                selectionViewModel.selectedMovieId = it.imdbID
+                findNavController().navigate(R.id.action_moviesFragment_to_detailFragment)
             }.let {
                 compositeDisposable.add(it)
             }

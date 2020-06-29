@@ -1,6 +1,7 @@
 package com.einhesari.batmanmovies.data.repository
 
 import com.einhesari.batmanmovies.data.datasource.remote.MoviesRemoteDataSource
+import com.einhesari.batmanmovies.domain.model.Movie
 import com.einhesari.batmanmovies.domain.model.SearchedMovie
 import com.einhesari.batmanmovies.domain.repository.MovieRepository
 import io.reactivex.Single
@@ -10,5 +11,9 @@ class MovieRepositoryImpl @Inject constructor(private val movieRemoteDataSource:
     MovieRepository {
     override fun getAllBatmanMovies(): Single<List<SearchedMovie>> {
         return movieRemoteDataSource.getAllBatmanMovies()
+    }
+
+    override fun getMovie(imdbID: String): Single<Movie> {
+        TODO("Not yet implemented")
     }
 }
