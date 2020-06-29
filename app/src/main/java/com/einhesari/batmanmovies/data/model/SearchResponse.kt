@@ -4,7 +4,7 @@ import com.einhesari.batmanmovies.domain.model.SearchedMovie
 import com.google.gson.annotations.SerializedName
 
 data class SearchResponse(
-    @SerializedName("search") val foundedMovies: List<FoundedMovie>,
+    @SerializedName("Search") val foundedMovies: List<FoundedMovie>,
     @SerializedName("totalResults") val totalResults: String,
     @SerializedName("Response") val Response: String
 )

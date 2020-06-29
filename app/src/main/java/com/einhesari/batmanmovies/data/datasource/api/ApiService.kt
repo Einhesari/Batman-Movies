@@ -7,7 +7,7 @@ import retrofit2.http.Query
 
 interface ApiService {
 
-    @GET
+    @GET("/")
     fun getAllBatmanMovies(@Query("s") star: String): Single<SearchResponse>
 
 //    fun getMovieDetail(@Query("i") imdbID: String): Single<Movie>

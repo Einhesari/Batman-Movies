@@ -7,7 +7,7 @@ import com.einhesari.batmanmovies.domain.model.SearchedMovie
 import io.reactivex.Single
 import javax.inject.Inject
 
-class MovieRemoteDataSourceImpl @Inject constructor(val apiService: ApiService) :
+class MovieRemoteDataSourceImpl @Inject constructor(private val apiService: ApiService) :
     MoviesRemoteDataSource {
     private val movieStar = "batman"
     val allMovies = mutableListOf<SearchedMovie>()

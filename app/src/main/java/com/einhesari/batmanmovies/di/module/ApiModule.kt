@@ -18,7 +18,7 @@ import javax.inject.Singleton
 class ApiModule {
 
     private val requestTimeout = 60L
-    private val baseUrl = "https://developers.zomato.com/"
+    private val baseUrl = "http://www.omdbapi.com/"
     private val apiKey = "apikey"
 
     @Provides
