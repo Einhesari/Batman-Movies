@@ -17,7 +17,7 @@ data class Movie(
 )
 
 fun Movie.mapToPresentationModel(): DetailedMovie {
-    val rating = "Rated $imdbRating out of total $imdbVotes votes"
+    val rating = "Rated $imdbRating out of $imdbVotes votes"
     return DetailedMovie(
         title = title,
         year = year,

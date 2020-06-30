@@ -37,6 +37,10 @@ class MoviesViewModel @Inject constructor(val useCase: MovieUseCase) : ViewModel
         super.onCleared()
         compositeDisposable.dispose()
     }
+
+    fun retoreData() {
+        state.accept(MoviesFragmentState.GotAllMovies(allMovies))
+    }
 }
 
 sealed class MoviesFragmentState {

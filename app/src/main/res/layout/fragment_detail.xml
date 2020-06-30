@@ -44,7 +44,7 @@
             <View
                 android:layout_width="@dimen/movie_detail_image_ring"
                 android:layout_height="@dimen/movie_detail_image_ring"
-                android:background="@{movie.poster.empty ? null : @drawable/movie_image_ring}"
+                android:background="@drawable/movie_image_ring"
                 app:layout_constraintBottom_toBottomOf="@id/restaurant_photo_img"
                 app:layout_constraintEnd_toEndOf="@id/restaurant_photo_img"
                 app:layout_constraintStart_toStartOf="@id/restaurant_photo_img"

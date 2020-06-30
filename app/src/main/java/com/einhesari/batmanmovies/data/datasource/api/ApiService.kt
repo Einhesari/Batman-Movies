@@ -11,5 +11,6 @@ interface ApiService {
     @GET("/")
     fun getAllBatmanMovies(@Query("s") star: String): Single<SearchResponse>
 
+    @GET("/")
     fun getMovieDetail(@Query("i") imdbID: String): Single<SingleMovieResponse>
 }

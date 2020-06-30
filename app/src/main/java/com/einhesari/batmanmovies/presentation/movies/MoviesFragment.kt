@@ -54,8 +54,8 @@ class MoviesFragment : Fragment() {
 
         binding.host = this
 
-        initDataInteraction(savedInstanceState)
         initViewInteraction(savedInstanceState)
+        initDataInteraction(savedInstanceState)
 
     }
 
@@ -63,7 +63,8 @@ class MoviesFragment : Fragment() {
         if (savedInstanceState == null && selectionViewModel.selectedMovieId.equals("")) {
             viewModel.getAllBatmanMovies()
         }
-        viewModel.getState().observeOn(AndroidSchedulers.mainThread())
+        viewModel.getState()
+            .observeOn(AndroidSchedulers.mainThread())
             .subscribe {
                 handleState(it)
             }.let {
@@ -129,8 +130,8 @@ class MoviesFragment : Fragment() {
         viewModel.getAllBatmanMovies()
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
+    override fun onDestroy() {
+        super.onDestroy()
         compositeDisposable.dispose()
     }
 

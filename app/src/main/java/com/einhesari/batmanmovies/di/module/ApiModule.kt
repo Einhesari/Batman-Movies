@@ -74,12 +74,12 @@ class ApiModule {
             var request = chain.request()
 
             if (isInternetAvailable(context)) {
-                request.newBuilder().header("Cache-Control", "public, max-age=" + 5);
+                request.newBuilder().header("Cache-Control", "public, max-age=" + 5)
             } else {
                 request.newBuilder().header(
                     "Cache-Control",
                     "public, only-if-cached, max-stale=" + 60 * 60 * 24 * 7
-                );
+                )
             }
             val url = request.url.newBuilder()
                 .addQueryParameter(apiKey, context.getString(R.string.api_key)).build()
