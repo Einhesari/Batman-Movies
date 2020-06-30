@@ -12,8 +12,13 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:background="@color/blank_background_color"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/blank_background_color">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/movie_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
         <androidx.core.widget.ContentLoadingProgressBar
             android:id="@+id/loading"
@@ -25,7 +30,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
 
 
         <androidx.constraintlayout.widget.Group
@@ -63,10 +67,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/movies_fetch_error_textView" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/movie_rv"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
