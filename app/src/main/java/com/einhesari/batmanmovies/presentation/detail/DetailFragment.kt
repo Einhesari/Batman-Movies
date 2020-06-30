@@ -72,6 +72,8 @@ class DetailFragment : Fragment() {
             is DetailFragmentState.GotMovie -> {
                 binding.loading.hide()
                 binding.movie = state.movie
+                binding.genreTv.isSelected = true
+                binding.movieTitleTv.isSelected = true
             }
             is DetailFragmentState.Error -> {
                 findNavController().navigateUp()

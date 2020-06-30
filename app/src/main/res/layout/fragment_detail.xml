@@ -63,7 +63,7 @@
 
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/restaurant_name_tv"
+                android:id="@+id/movie_title_tv"
                 style="@style/TextAppearance.MaterialComponents.Headline5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -78,7 +78,7 @@
                 tools:text="Movie title" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/restaurant_cuisine_tv"
+                android:id="@+id/movie_year_tv"
                 style="@style/TextAppearance.MaterialComponents.Subtitle2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -89,7 +89,7 @@
                 android:gravity="center"
                 android:singleLine="true"
                 android:text="@{movie.year}"
-                app:layout_constraintTop_toBottomOf="@id/restaurant_name_tv"
+                app:layout_constraintTop_toBottomOf="@id/movie_title_tv"
                 tools:text="year" />
 
             <View
@@ -101,7 +101,7 @@
                 android:background="@color/colorPrimary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/restaurant_cuisine_tv" />
+                app:layout_constraintTop_toBottomOf="@id/movie_year_tv" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/director_tv"
@@ -116,7 +116,7 @@
                 android:singleLine="true"
                 android:text="@{movie.director}"
                 app:drawableStartCompat="@drawable/ic_director"
-                app:layout_constraintTop_toBottomOf="@id/restaurant_cuisine_tv"
+                app:layout_constraintTop_toBottomOf="@id/movie_year_tv"
                 tools:text="director" />
 
             <com.google.android.material.textview.MaterialTextView
