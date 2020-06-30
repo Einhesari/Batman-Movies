@@ -6,6 +6,6 @@ import androidx.lifecycle.ViewModel
 class ListToDetailViewModel : ViewModel() {
 
     var selectedMovieId: String = ""
-    var lastListPosition: Int = 0
+    var firstListPosition: Int = 0
 
 }

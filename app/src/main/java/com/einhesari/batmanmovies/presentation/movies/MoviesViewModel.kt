@@ -2,14 +2,14 @@ package com.einhesari.batmanmovies.presentation
 
 import androidx.lifecycle.ViewModel
 import com.einhesari.batmanmovies.domain.model.mapToPresetationModel
-import com.einhesari.batmanmovies.domain.usecase.MoviesUseCase
+import com.einhesari.batmanmovies.domain.usecase.MovieUseCase
 import com.einhesari.batmanmovies.presentation.model.BatmanMovie
 import com.jakewharton.rxrelay2.BehaviorRelay
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class MoviesViewModel @Inject constructor(private val useCase: MoviesUseCase) : ViewModel() {
+class MoviesViewModel @Inject constructor(val useCase: MovieUseCase) : ViewModel() {
 
     private val compositeDisposable = CompositeDisposable()
     private val allMovies = mutableListOf<BatmanMovie>()

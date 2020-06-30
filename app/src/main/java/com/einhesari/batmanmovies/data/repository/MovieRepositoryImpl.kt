@@ -14,6 +14,6 @@ class MovieRepositoryImpl @Inject constructor(private val movieRemoteDataSource:
     }
 
     override fun getMovie(imdbID: String): Single<Movie> {
-        TODO("Not yet implemented")
+        return movieRemoteDataSource.getMovie(imdbID)
     }
 }

@@ -29,4 +29,7 @@
 
     <color name="colorError">#E0001D</color>
     <color name="colorOnError">#ffffff</color>
+
+    <color name="blank_background_color">#eeeeee</color>
+
 </resources>

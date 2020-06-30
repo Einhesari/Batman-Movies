@@ -1,62 +1,214 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
+        <variable
+            name="movie"
+            type="com.einhesari.batmanmovies.presentation.model.DetailedMovie" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/blank_background_color"
+        tools:context=".view.RestaurantDetailFragment">
 
-        <androidx.core.widget.ContentLoadingProgressBar
-            android:id="@+id/loading"
-            style="@style/Widget.AppCompat.ProgressBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:indeterminate="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.Group
-            android:id="@+id/network_error_group"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:constraint_referenced_ids="movies_tryagain,movies_fetch_error_textView" />
+            <View
+                android:id="@+id/characterDetailAvatarCenterIndicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_small"
+                app:layout_constraintBottom_toBottomOf="@id/restaurant_photo_img"
+                app:layout_constraintEnd_toEndOf="@id/restaurant_photo_img"
+                app:layout_constraintStart_toStartOf="@id/restaurant_photo_img"
+                app:layout_constraintTop_toTopOf="@id/restaurant_photo_img" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/movies_fetch_error_textView"
-            style="@style/TextAppearance.MaterialComponents.Body1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawablePadding="@dimen/padding_standard"
-            android:gravity="center"
-            android:text="@string/netwrok_error"
-            app:drawableTopCompat="@drawable/ic_error_batman"
-            app:layout_constraintBottom_toTopOf="@id/movies_tryagain"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:background="@drawable/bg_custom_card"
+                app:layout_constraintBottom_toBottomOf="@id/rating_tv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/characterDetailAvatarCenterIndicator" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/movies_tryagain"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_standard"
-            android:onClick="@{(view) -> host.tryAgain(view)}"
-            android:text="@string/try_again"
-            android:textColor="@color/colorSecondary"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/movies_fetch_error_textView" />
+            <View
+                android:layout_width="@dimen/movie_detail_image_ring"
+                android:layout_height="@dimen/movie_detail_image_ring"
+                android:background="@{movie.poster.empty ? null : @drawable/movie_image_ring}"
+                app:layout_constraintBottom_toBottomOf="@id/restaurant_photo_img"
+                app:layout_constraintEnd_toEndOf="@id/restaurant_photo_img"
+                app:layout_constraintStart_toStartOf="@id/restaurant_photo_img"
+                app:layout_constraintTop_toTopOf="@id/restaurant_photo_img" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/restaurant_photo_img"
+                android:layout_width="@dimen/movie_detail_image"
+                android:layout_height="@dimen/movie_detail_image"
+                android:layout_marginTop="@dimen/margin_large"
+                android:layout_marginBottom="@dimen/margin_large"
+                android:imageUrl="@{movie.poster}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/restaurant_name_tv"
+                style="@style/TextAppearance.MaterialComponents.Headline5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_large"
+                android:layout_marginTop="@dimen/margin_large"
+                android:layout_marginEnd="@dimen/margin_large"
+                android:ellipsize="marquee"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="@{movie.title}"
+                app:layout_constraintTop_toBottomOf="@id/restaurant_photo_img"
+                tools:text="Movie title" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/restaurant_cuisine_tv"
+                style="@style/TextAppearance.MaterialComponents.Subtitle2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_large"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_marginEnd="@dimen/margin_large"
+                android:ellipsize="marquee"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="@{movie.year}"
+                app:layout_constraintTop_toBottomOf="@id/restaurant_name_tv"
+                tools:text="year" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/padding_xlarge"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_marginEnd="@dimen/margin_xlarge"
+                android:background="@color/colorPrimary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/restaurant_cuisine_tv" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/director_tv"
+                style="@style/TextAppearance.MaterialComponents.Body1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_standard"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:drawablePadding="@dimen/padding_small"
+                android:ellipsize="marquee"
+                android:padding="@dimen/padding_standard"
+                android:singleLine="true"
+                android:text="@{movie.director}"
+                app:drawableStartCompat="@drawable/ic_director"
+                app:layout_constraintTop_toBottomOf="@id/restaurant_cuisine_tv"
+                tools:text="director" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/released_tv"
+                style="@style/TextAppearance.MaterialComponents.Body1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/director_tv"
+                android:layout_marginStart="@dimen/margin_standard"
+                android:drawablePadding="@dimen/padding_small"
+                android:ellipsize="marquee"
+                android:padding="@dimen/padding_standard"
+                android:singleLine="true"
+                android:text="@{movie.released}"
+                app:drawableStartCompat="@drawable/ic_released_date"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/director_tv"
+                tools:text="released" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/genre_tv"
+                style="@style/TextAppearance.MaterialComponents.Body1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/director_tv"
+                android:layout_marginStart="@dimen/margin_standard"
+                android:drawablePadding="@dimen/padding_small"
+                android:ellipsize="marquee"
+                android:padding="@dimen/padding_standard"
+                android:singleLine="true"
+                android:text="@{movie.genre}"
+                app:drawableStartCompat="@drawable/ic_genre"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/released_tv"
+                tools:text="genre" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/rated_tv"
+                style="@style/TextAppearance.MaterialComponents.Body1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_standard"
+                android:drawablePadding="@dimen/padding_small"
+                android:ellipsize="marquee"
+                android:padding="@dimen/padding_standard"
+                android:singleLine="true"
+                android:text="@{movie.rated}"
+                app:drawableStartCompat="@drawable/ic_rated"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/genre_tv"
+                tools:text="rated" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/rating_tv"
+                style="@style/TextAppearance.MaterialComponents.Body1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_standard"
+                android:drawablePadding="@dimen/padding_small"
+                android:ellipsize="marquee"
+                android:padding="@dimen/padding_standard"
+                android:singleLine="true"
+                android:text="@{movie.rating}"
+                app:drawableStartCompat="@drawable/ic_rating"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rated_tv"
+                tools:text="rating" />
+
+            <androidx.core.widget.ContentLoadingProgressBar
+                android:id="@+id/loading"
+                style="@style/Widget.AppCompat.ProgressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
 
 </layout>

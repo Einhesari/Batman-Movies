@@ -25,5 +25,8 @@
 
     <dimen name="movie_poster_size">84dp</dimen>
 
+    <!-- Restaurant detail -->
+    <dimen name="movie_detail_image">200dp</dimen>
+    <dimen name="movie_detail_image_ring">205dp</dimen>
 
 </resources>

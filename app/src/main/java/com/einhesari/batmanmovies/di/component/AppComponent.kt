@@ -3,6 +3,7 @@ package com.einhesari.batmanmovies.di.component
 import android.content.Context
 import com.einhesari.batmanmovies.di.module.*
 import com.einhesari.batmanmovies.presentation.MoviesFragment
+import com.einhesari.batmanmovies.presentation.detail.DetailFragment
 import dagger.BindsInstance
 import dagger.Component
 import dagger.Subcomponent
@@ -33,6 +34,7 @@ interface AppComponent {
 interface ViewModelComponent {
 
     fun inject(moviesFragment: MoviesFragment)
+    fun inject(detailFragment: DetailFragment)
 
     @Subcomponent.Factory
     interface Factory {

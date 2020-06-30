@@ -21,13 +21,13 @@ import javax.inject.Inject
 
 class MoviesFragment : Fragment() {
 
-    lateinit var binding: FragmentMoviesBinding
+    private lateinit var binding: FragmentMoviesBinding
     private val compositeDisposable = CompositeDisposable()
     private val selectionViewModel: ListToDetailViewModel by activityViewModels()
 
     @Inject
     lateinit var factory: ViewModelProviderFactory
-    lateinit var viewModel: MoviesViewModel
+    private lateinit var viewModel: MoviesViewModel
 
     private lateinit var adapter: MovieAdapter
     private lateinit var gridLayoutManager: GridLayoutManager
@@ -60,7 +60,7 @@ class MoviesFragment : Fragment() {
     }
 
     private fun initDataInteraction(savedInstanceState: Bundle?) {
-        if (savedInstanceState == null || selectionViewModel.selectedMovieId.equals("")) {
+        if (savedInstanceState == null && selectionViewModel.selectedMovieId.equals("")) {
             viewModel.getAllBatmanMovies()
         }
         viewModel.getState().observeOn(AndroidSchedulers.mainThread())
@@ -83,7 +83,8 @@ class MoviesFragment : Fragment() {
         adapter.selectedMovie()
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe {
-                selectionViewModel.lastListPosition = getFirstVisibleItemPosition()
+                firstVisibleMovie = getFirstVisibleItemPosition()
+                selectionViewModel.firstListPosition = firstVisibleMovie
                 selectionViewModel.selectedMovieId = it.imdbID
                 findNavController().navigate(R.id.action_moviesFragment_to_detailFragment)
             }.let {
@@ -115,15 +116,6 @@ class MoviesFragment : Fragment() {
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        compositeDisposable.dispose()
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        outState.putInt(stateBundlePositionKey, getFirstVisibleItemPosition())
-        super.onSaveInstanceState(outState)
-    }
 
     private fun getFirstVisibleItemPosition(): Int {
         (movieRv.layoutManager as? GridLayoutManager)
@@ -135,5 +127,15 @@ class MoviesFragment : Fragment() {
 
     fun tryAgain(view: View) {
         viewModel.getAllBatmanMovies()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        compositeDisposable.dispose()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putInt(stateBundlePositionKey, firstVisibleMovie)
+        super.onSaveInstanceState(outState)
     }
 }
