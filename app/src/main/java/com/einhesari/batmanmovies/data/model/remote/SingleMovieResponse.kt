@@ -1,4 +1,4 @@
-package com.einhesari.batmanmovies.data.model
+package com.einhesari.batmanmovies.data.model.remote
 
 import com.einhesari.batmanmovies.domain.model.Movie
 import com.google.gson.annotations.SerializedName

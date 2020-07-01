@@ -1,7 +1,7 @@
 package com.einhesari.batmanmovies.data.datasource.api
 
-import com.einhesari.batmanmovies.data.model.SearchResponse
-import com.einhesari.batmanmovies.data.model.SingleMovieResponse
+import com.einhesari.batmanmovies.data.model.remote.SearchResponse
+import com.einhesari.batmanmovies.data.model.remote.SingleMovieResponse
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query

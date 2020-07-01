@@ -2,7 +2,7 @@ package com.einhesari.batmanmovies.datasource
 
 import com.einhesari.batmanmovies.data.datasource.api.ApiService
 import com.einhesari.batmanmovies.data.datasource.remote.MovieRemoteDataSource
-import com.einhesari.batmanmovies.data.model.mapToDomainModel
+import com.einhesari.batmanmovies.data.model.remote.mapToDomainModel
 import com.einhesari.batmanmovies.domain.model.Movie
 import com.einhesari.batmanmovies.domain.model.SearchedMovie
 import io.reactivex.Single
