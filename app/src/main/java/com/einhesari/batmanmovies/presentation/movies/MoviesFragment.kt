@@ -130,9 +130,10 @@ class MoviesFragment : Fragment() {
         viewModel.getAllBatmanMovies()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         compositeDisposable.dispose()
+
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

@@ -5,7 +5,7 @@ import com.einhesari.batmanmovies.domain.model.Movie
 import com.einhesari.batmanmovies.domain.model.SearchedMovie
 import io.reactivex.Single
 
-interface MoviesRemoteDataSource {
+interface MovieRemoteDataSource {
 
     fun getAllBatmanMovies(): Single<List<SearchedMovie>>
 

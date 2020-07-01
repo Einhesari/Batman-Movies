@@ -30,7 +30,7 @@ class DetailFragment : Fragment() {
     lateinit var factory: ViewModelProviderFactory
 
     private lateinit var binding: FragmentDetailBinding
-    private val compositeDisposable = CompositeDisposable()
+    private lateinit var compositeDisposable: CompositeDisposable
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,6 +50,7 @@ class DetailFragment : Fragment() {
 
         viewModel = ViewModelProvider(this, factory)[DetailViewModel::class.java]
 
+        compositeDisposable = CompositeDisposable()
 
         initDataInteraction(savedInstanceState)
     }
@@ -85,8 +86,8 @@ class DetailFragment : Fragment() {
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         compositeDisposable.dispose()
 
     }
