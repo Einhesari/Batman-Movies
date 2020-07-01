@@ -13,22 +13,21 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/blank_background_color"
-        tools:context=".view.RestaurantDetailFragment">
+        android:background="@color/blank_background_color">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <View
-                android:id="@+id/characterDetailAvatarCenterIndicator"
+                android:id="@+id/movie_detail_poster_center_indicator"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/margin_small"
-                app:layout_constraintBottom_toBottomOf="@id/restaurant_photo_img"
-                app:layout_constraintEnd_toEndOf="@id/restaurant_photo_img"
-                app:layout_constraintStart_toStartOf="@id/restaurant_photo_img"
-                app:layout_constraintTop_toTopOf="@id/restaurant_photo_img" />
+                app:layout_constraintBottom_toBottomOf="@id/movie_poster_img"
+                app:layout_constraintEnd_toEndOf="@id/movie_poster_img"
+                app:layout_constraintStart_toStartOf="@id/movie_poster_img"
+                app:layout_constraintTop_toTopOf="@id/movie_poster_img" />
 
             <View
                 android:layout_width="match_parent"
@@ -39,19 +38,19 @@
                 app:layout_constraintBottom_toBottomOf="@id/rating_tv"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/characterDetailAvatarCenterIndicator" />
+                app:layout_constraintTop_toTopOf="@id/movie_detail_poster_center_indicator" />
 
             <View
                 android:layout_width="@dimen/movie_detail_image_ring"
                 android:layout_height="@dimen/movie_detail_image_ring"
                 android:background="@drawable/movie_image_ring"
-                app:layout_constraintBottom_toBottomOf="@id/restaurant_photo_img"
-                app:layout_constraintEnd_toEndOf="@id/restaurant_photo_img"
-                app:layout_constraintStart_toStartOf="@id/restaurant_photo_img"
-                app:layout_constraintTop_toTopOf="@id/restaurant_photo_img" />
+                app:layout_constraintBottom_toBottomOf="@id/movie_poster_img"
+                app:layout_constraintEnd_toEndOf="@id/movie_poster_img"
+                app:layout_constraintStart_toStartOf="@id/movie_poster_img"
+                app:layout_constraintTop_toTopOf="@id/movie_poster_img" />
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/restaurant_photo_img"
+                android:id="@+id/movie_poster_img"
                 android:layout_width="@dimen/movie_detail_image"
                 android:layout_height="@dimen/movie_detail_image"
                 android:layout_marginTop="@dimen/margin_large"
@@ -74,7 +73,7 @@
                 android:gravity="center"
                 android:singleLine="true"
                 android:text="@{movie.title}"
-                app:layout_constraintTop_toBottomOf="@id/restaurant_photo_img"
+                app:layout_constraintTop_toBottomOf="@id/movie_poster_img"
                 tools:text="Movie title" />
 
             <com.google.android.material.textview.MaterialTextView
