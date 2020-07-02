@@ -1,5 +1,6 @@
 package com.einhesari.batmanmovies.data.model.remote
 
+import com.einhesari.batmanmovies.data.model.database.MovieEntity
 import com.einhesari.batmanmovies.domain.model.SearchedMovie
 import com.google.gson.annotations.SerializedName
 
@@ -19,6 +20,15 @@ data class FoundedMovie(
 
 fun FoundedMovie.mapToDomainModel(): SearchedMovie {
     return SearchedMovie(
+        title = title,
+        year = year,
+        imdbID = imdbID,
+        type = type,
+        poster = posterUrl
+    )
+}
+fun FoundedMovie.mapToDbModel(): MovieEntity {
+    return MovieEntity(
         title = title,
         year = year,
         imdbID = imdbID,

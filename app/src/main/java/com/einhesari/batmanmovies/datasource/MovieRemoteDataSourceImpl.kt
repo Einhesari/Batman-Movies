@@ -2,6 +2,7 @@ package com.einhesari.batmanmovies.datasource
 
 import com.einhesari.batmanmovies.data.datasource.api.ApiService
 import com.einhesari.batmanmovies.data.datasource.remote.MovieRemoteDataSource
+import com.einhesari.batmanmovies.data.model.remote.SearchResponse
 import com.einhesari.batmanmovies.data.model.remote.mapToDomainModel
 import com.einhesari.batmanmovies.domain.model.Movie
 import com.einhesari.batmanmovies.domain.model.SearchedMovie
@@ -12,14 +13,9 @@ class MovieRemoteDataSourceImpl @Inject constructor(private val apiService: ApiS
     MovieRemoteDataSource {
     private val movieStar = "batman"
     val allMovies = mutableListOf<SearchedMovie>()
-    override fun getAllBatmanMovies(): Single<List<SearchedMovie>> {
+    override fun getAllBatmanMovies(): Single<SearchResponse> {
         return apiService.getAllBatmanMovies(movieStar)
-            .flatMap {
-                it.foundedMovies.forEach {
-                    allMovies.add(it.mapToDomainModel())
-                }
-                return@flatMap Single.just(allMovies)
-            }
+
 
     }
 
