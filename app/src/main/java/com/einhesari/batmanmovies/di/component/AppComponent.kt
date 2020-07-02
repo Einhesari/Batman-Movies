@@ -13,8 +13,8 @@ import javax.inject.Singleton
 @Component(
     modules = [
         ApiModule::class,
-        MoviesRemoteDataSourceModule::class,
-        MoviesRemoteDataSourceModule::class,
+        DataSourceModule::class,
+        DataSourceModule::class,
         MovieRepositoryModule::class,
         ViewModelFactoryModule::class,
         ViewModelModule::class
