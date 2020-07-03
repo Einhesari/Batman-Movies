@@ -9,8 +9,12 @@ import javax.inject.Inject
 
 class AllMoviesUseCase @Inject constructor(private val repository: MovieRepository) {
 
-    fun getAllMovies(): Single<Pair<Boolean, List<SearchedMovie>>> {
-        return repository.getAllBatmanMovies()
+    fun getAllMoviesFromServer(): Single<List<SearchedMovie>> {
+        return repository.getAllBatmanMoviesFromServer()
+    }
+
+    fun getAllMoviesFromCache(): Single<List<SearchedMovie>> {
+        return repository.getAllBatmanMoviesFromCache()
     }
 
     fun getMovie(imdbId: String): Single<Pair<Boolean, Movie>> {

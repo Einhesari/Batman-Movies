@@ -61,6 +61,7 @@ def leakcanary_version = "2.1"
 def glide_version = "4.11.0"
 def dagger_version = "2.25.4"
 def room_version = "2.2.3"
+def android_debug_database_version = "1.0.6"
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -107,5 +108,7 @@ dependencies {
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-rxjava2:$room_version"
+
+    debugImplementation "com.amitshekhar.android:debug-db:$android_debug_database_version"
 
 }

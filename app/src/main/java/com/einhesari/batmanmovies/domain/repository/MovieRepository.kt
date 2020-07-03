@@ -9,7 +9,9 @@ import io.reactivex.Single
 
 interface MovieRepository {
 
-    fun getAllBatmanMovies(): Single<Pair<Boolean, List<SearchedMovie>>>
+    fun getAllBatmanMoviesFromServer(): Single<List<SearchedMovie>>
+
+    fun getAllBatmanMoviesFromCache(): Single<List<SearchedMovie>>
 
     fun getMovie(imdbID: String): Single<Pair<Boolean, Movie>>
 

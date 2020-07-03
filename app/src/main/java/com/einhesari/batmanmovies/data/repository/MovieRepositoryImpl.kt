@@ -18,18 +18,27 @@ class MovieRepositoryImpl @Inject constructor(
 ) : MovieRepository {
 
 
-    override fun getAllBatmanMovies(): Single<Pair<Boolean, List<SearchedMovie>>> {
-        return movieCacheDataSource.getAllBatmanMovies()
-            .flatMap {
-                if (it.isEmpty()) {
-                    movieRemoteDataSource.getAllBatmanMovies().map {
-                        Pair(false, it.foundedMovies.map { it.mapToDomainModel() })
-                    }
-                } else {
-                    Single.just(Pair(true, it.map { it.mapToDomainModel() }))
-                }
+    override fun getAllBatmanMoviesFromServer(): Single<List<SearchedMovie>> {
+        return movieRemoteDataSource.getAllBatmanMovies().map {
+            it.foundedMovies.map { it.mapToDomainModel() }
+        }
+//        return movieCacheDataSource.getAllBatmanMovies()
+//            .flatMap {
+//                if (it.isEmpty()) {
+//                    movieRemoteDataSource.getAllBatmanMovies().map {
+//                        Pair(false, it.foundedMovies.map { it.mapToDomainModel() })
+//                    }
+//                } else {
+//                    Single.just(Pair(true, it.map { it.mapToDomainModel() }))
+//                }
+//
+//            }
+    }
 
-            }
+    override fun getAllBatmanMoviesFromCache(): Single<List<SearchedMovie>> {
+        return movieCacheDataSource.getAllBatmanMovies().map {
+            it.map { it.mapToDomainModel() }
+        }
     }
 
     override fun getMovie(imdbID: String): Single<Pair<Boolean, Movie>> {
