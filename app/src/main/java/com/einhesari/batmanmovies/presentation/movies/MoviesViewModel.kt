@@ -1,6 +1,5 @@
 package com.einhesari.batmanmovies.presentation.movies
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.einhesari.batmanmovies.domain.model.SearchedMovie
 import com.einhesari.batmanmovies.domain.model.mapToPresetationModel

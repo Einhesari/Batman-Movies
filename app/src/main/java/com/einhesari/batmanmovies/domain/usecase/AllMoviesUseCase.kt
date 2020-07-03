@@ -17,10 +17,6 @@ class AllMoviesUseCase @Inject constructor(private val repository: MovieReposito
         return repository.getAllBatmanMoviesFromCache()
     }
 
-    fun getMovie(imdbId: String): Single<Pair<Boolean, Movie>> {
-        return repository.getMovie(imdbId)
-    }
-
     fun cacheAllMovies(movies: List<SearchedMovie>): Completable {
         return repository.setAllMoviesToDb(movies)
     }

@@ -2,9 +2,7 @@ package com.einhesari.batmanmovies.presentation.detail
 
 import androidx.lifecycle.ViewModel
 import com.einhesari.batmanmovies.domain.model.Movie
-import com.einhesari.batmanmovies.domain.model.SearchedMovie
 import com.einhesari.batmanmovies.domain.model.mapToPresentationModel
-import com.einhesari.batmanmovies.domain.usecase.AllMoviesUseCase
 import com.einhesari.batmanmovies.domain.usecase.SingleMovieUseCase
 import com.einhesari.batmanmovies.presentation.model.DetailedMovie
 import com.jakewharton.rxrelay2.BehaviorRelay
@@ -20,26 +18,36 @@ class DetailViewModel @Inject constructor(val useCase: SingleMovieUseCase) : Vie
 
     fun getMovie(imdbId: String) {
         state.accept(DetailFragmentState.Loading)
-        useCase.getMovie(imdbId)
+        useCase.getMovieFromServer(imdbId)
             .subscribeOn(Schedulers.io())
             .subscribe({
-                state.accept(DetailFragmentState.GotMovie(it.second.mapToPresentationModel()))
+                state.accept(DetailFragmentState.GotMovie(it.mapToPresentationModel()))
                 checkAndUpdateCacheIfNecessary(it)
             }, {
-                state.accept(DetailFragmentState.Error(it))
+                getMovieFromCache(imdbId)
             }).let {
                 compositeDisposable.add(it)
             }
     }
 
-    private fun checkAndUpdateCacheIfNecessary(result: Pair<Boolean, Movie>) {
-        if (result.first.not()) {
-            useCase.cacheMovie(result.second).subscribeOn(Schedulers.io())
-                .subscribe()
-                .let {
-                    compositeDisposable.add(it)
-                }
-        }
+    private fun getMovieFromCache(imdbId: String) {
+        useCase.getMovieFromCache(imdbId)
+            .subscribeOn(Schedulers.io())
+            .subscribe({
+                state.accept(DetailFragmentState.GotMovie(it.mapToPresentationModel()))
+            }, {
+                state.accept(DetailFragmentState.Error(it))
+            }).let {
+                compositeDisposable.dispose()
+            }
+    }
+
+    private fun checkAndUpdateCacheIfNecessary(result: Movie) {
+        useCase.cacheMovie(result).subscribeOn(Schedulers.io())
+            .subscribe()
+            .let {
+                compositeDisposable.add(it)
+            }
     }
 
     override fun onCleared() {

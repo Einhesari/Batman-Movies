@@ -23,7 +23,7 @@ data class SingleMovieResponse(
     @SerializedName("imdbVotes") val imdbVotes: String,
     @SerializedName("imdbID") val imdbID: String,
     @SerializedName("Type") val type: String,
-    @SerializedName("DVD") val dvdRealeseData: String,
+    @SerializedName("DVD") val dvdRealeseDate: String,
     @SerializedName("BoxOffice") val boxOffice: String,
     @SerializedName("Production") val production: String,
     @SerializedName("Website") val website: String,

@@ -20,7 +20,7 @@ interface MovieCacheDataSource {
     fun setAllBatmanMovies(movies: List<MovieEntity>): Completable
 
     @Query("SELECT * FROM detailed_movies WHERE imdbID LIKE :imdbID LIMIT 1")
-    fun getDetailedMovie(imdbID: String): Single<List<DetailedMovieEntity>>
+    fun getDetailedMovie(imdbID: String): Single<DetailedMovieEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun setDetailedMovie(movie: DetailedMovieEntity): Completable

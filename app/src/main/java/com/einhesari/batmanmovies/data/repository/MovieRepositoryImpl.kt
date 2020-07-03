@@ -22,17 +22,6 @@ class MovieRepositoryImpl @Inject constructor(
         return movieRemoteDataSource.getAllBatmanMovies().map {
             it.foundedMovies.map { it.mapToDomainModel() }
         }
-//        return movieCacheDataSource.getAllBatmanMovies()
-//            .flatMap {
-//                if (it.isEmpty()) {
-//                    movieRemoteDataSource.getAllBatmanMovies().map {
-//                        Pair(false, it.foundedMovies.map { it.mapToDomainModel() })
-//                    }
-//                } else {
-//                    Single.just(Pair(true, it.map { it.mapToDomainModel() }))
-//                }
-//
-//            }
     }
 
     override fun getAllBatmanMoviesFromCache(): Single<List<SearchedMovie>> {
@@ -41,17 +30,17 @@ class MovieRepositoryImpl @Inject constructor(
         }
     }
 
-    override fun getMovie(imdbID: String): Single<Pair<Boolean, Movie>> {
-        return movieCacheDataSource.getDetailedMovie(imdbID)
-            .flatMap {
-                if (it.isEmpty()) {
-                    movieRemoteDataSource.getMovie(imdbID).map {
-                        Pair(false, it)
-                    }
-                } else {
-                    Single.just(Pair(true, it.first().mapToDomainModel()))
-                }
-            }
+    override fun getMovieFromServer(imdbID: String): Single<Movie> {
+        return movieRemoteDataSource.getMovie(imdbID).map {
+            it.mapToDomainModel()
+        }
+
+    }
+
+    override fun getMovieFromCache(imdbID: String): Single<Movie> {
+        return movieCacheDataSource.getDetailedMovie(imdbID).map {
+            it.mapToDomainModel()
+        }
     }
 
     override fun setAllMoviesToDb(movies: List<SearchedMovie>): Completable {
