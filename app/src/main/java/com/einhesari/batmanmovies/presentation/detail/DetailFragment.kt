@@ -77,8 +77,8 @@ class DetailFragment : Fragment() {
                 binding.movieTitleTv.isSelected = true
             }
             is DetailFragmentState.Error -> {
-                findNavController().navigateUp()
                 Toast.makeText(context, getString(R.string.detail_error), Toast.LENGTH_LONG).show()
+                findNavController().navigateUp()
             }
             is DetailFragmentState.Loading -> {
                 binding.loading.show()

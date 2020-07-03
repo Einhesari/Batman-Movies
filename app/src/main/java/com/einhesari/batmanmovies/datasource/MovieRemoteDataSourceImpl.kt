@@ -15,8 +15,6 @@ class MovieRemoteDataSourceImpl @Inject constructor(private val apiService: ApiS
     val allMovies = mutableListOf<SearchedMovie>()
     override fun getAllBatmanMovies(): Single<SearchResponse> {
         return apiService.getAllBatmanMovies(movieStar)
-
-
     }
 
     override fun getMovie(imdbID: String): Single<Movie> {

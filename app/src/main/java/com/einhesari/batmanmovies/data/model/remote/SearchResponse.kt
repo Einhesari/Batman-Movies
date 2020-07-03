@@ -27,12 +27,3 @@ fun FoundedMovie.mapToDomainModel(): SearchedMovie {
         poster = posterUrl
     )
 }
-fun FoundedMovie.mapToDbModel(): MovieEntity {
-    return MovieEntity(
-        title = title,
-        year = year,
-        imdbID = imdbID,
-        type = type,
-        poster = posterUrl
-    )
-}

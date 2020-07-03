@@ -1,5 +1,6 @@
 package com.einhesari.batmanmovies.domain.model
 
+import com.einhesari.batmanmovies.data.model.database.DetailedMovieEntity
 import com.einhesari.batmanmovies.presentation.model.DetailedMovie
 
 data class Movie(
@@ -29,5 +30,21 @@ fun Movie.mapToPresentationModel(): DetailedMovie {
         genre = genre,
         director = director,
         rating = rating
+    )
+}
+
+fun Movie.mapToDbModel(): DetailedMovieEntity {
+    return DetailedMovieEntity(
+        title = title,
+        year = year,
+        imdbID = imdbID,
+        type = type,
+        poster = poster,
+        rated = rated,
+        released = released,
+        genre = genre,
+        director = director,
+        imdbRating = imdbRating,
+        imdbVotes = imdbVotes
     )
 }
