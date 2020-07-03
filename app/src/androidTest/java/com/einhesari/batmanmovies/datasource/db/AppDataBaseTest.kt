@@ -1,4 +1,4 @@
-package com.einhesari.batmanmovies.datasource
+package com.einhesari.batmanmovies.datasource.db
 
 import android.content.Context
 import androidx.room.Room
@@ -7,6 +7,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.einhesari.batmanmovies.data.datasource.database.MovieCacheDataSource
 import com.einhesari.batmanmovies.data.model.database.DetailedMovieEntity
 import com.einhesari.batmanmovies.data.model.database.MovieEntity
+import com.einhesari.batmanmovies.datasource.AppDataBase
 import io.reactivex.disposables.CompositeDisposable
 import org.junit.After
 import org.junit.Before
@@ -91,9 +92,7 @@ class AppDataBaseTest {
         getDetailedMovieObserver.assertNoErrors()
         getDetailedMovieObserver.assertComplete()
         getDetailedMovieObserver.assertValue {
-            it.isNotEmpty() &&
-                    it.size == 1 &&
-                    it.first().equals(detailedMovie)
+            it.title.equals(detailedMovie.title)
         }
 
     }
