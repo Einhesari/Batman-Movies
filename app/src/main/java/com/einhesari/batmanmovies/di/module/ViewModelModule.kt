@@ -2,7 +2,7 @@ package com.einhesari.batmanmovies.di.module
 
 import androidx.lifecycle.ViewModel
 import com.einhesari.batmanmovies.di.scope.ViewModelKey
-import com.einhesari.batmanmovies.presentation.MoviesViewModel
+import com.einhesari.batmanmovies.presentation.movies.MoviesViewModel
 import com.einhesari.batmanmovies.presentation.detail.DetailViewModel
 import dagger.Binds
 import dagger.Module

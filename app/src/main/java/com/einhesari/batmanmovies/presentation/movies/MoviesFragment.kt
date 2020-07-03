@@ -15,6 +15,8 @@ import com.einhesari.batmanmovies.R
 import com.einhesari.batmanmovies.ViewModelProviderFactory
 import com.einhesari.batmanmovies.component
 import com.einhesari.batmanmovies.databinding.FragmentMoviesBinding
+import com.einhesari.batmanmovies.presentation.movies.MoviesFragmentState
+import com.einhesari.batmanmovies.presentation.movies.MoviesViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
@@ -22,7 +24,7 @@ import javax.inject.Inject
 class MoviesFragment : Fragment() {
 
     private lateinit var binding: FragmentMoviesBinding
-    private val compositeDisposable = CompositeDisposable()
+    private lateinit var compositeDisposable: CompositeDisposable
     private val selectionViewModel: ListToDetailViewModel by activityViewModels()
 
     @Inject
@@ -51,6 +53,8 @@ class MoviesFragment : Fragment() {
             .create()
             .inject(this)
         viewModel = ViewModelProvider(this, factory)[MoviesViewModel::class.java]
+
+        compositeDisposable = CompositeDisposable()
 
         binding.host = this
 

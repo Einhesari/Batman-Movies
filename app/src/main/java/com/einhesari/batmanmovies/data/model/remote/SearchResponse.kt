@@ -1,5 +1,6 @@
 package com.einhesari.batmanmovies.data.model.remote
 
+import com.einhesari.batmanmovies.data.model.database.MovieEntity
 import com.einhesari.batmanmovies.domain.model.SearchedMovie
 import com.google.gson.annotations.SerializedName
 
